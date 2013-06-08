@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <title>The Grumpy Phone</title>
+  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+  <style>
+      html {
+          height: 100%;
+          background-image: -moz-linear-gradient(top,#43BFC7,#008080);
+          background-repeat: repeat-x;
+      }
+  </style>
+</head>
+<body>
+<script type="text/javascript">
+    window.ondeviceproximity = function (event) {
+        if (event.value < 5) {
+           vibrating =  navigator.vibrate(2000);
+           $('html').css('background-image', '-moz-linear-gradient(top,#fe8d4b,#ff6000)');
+
+        } else {
+            vibrating =  navigator.vibrate(0);
+            $('html').css('background-image', '-moz-linear-gradient(top,#43BFC7,#008080)');
+        }
+    }
+</script>
+</body>
+</html>

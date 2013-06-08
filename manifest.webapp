@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "name": "The Grumpy Phone",
+  "description": "The Grumpy Phone - A demo app taken from https://leanpub.com/firefox-os",
+  "launch_path": "/index.html",
+  "icons": {
+    "64": "/img/icons/grumpy-64.png"
+  },
+  "developer": {
+    "name": "Michael Romer",
+    "url": "https://leanpub.com/firefox-os"
+  },
+  "installs_allowed_from": ["*"]
+}
