@@ -1,13 +1,3 @@
-# A Blank Template for Open Web Apps
+# The Grumpy Phone
 
-*This template has been updated with a new structure as of May 2013. Other mortar templates will be updated soon too.*
-
-The is a minimal template that has a little HTML, CSS, and js to help
-you start writing an Open Web App.
-
-This is part of the [mortar](https://github.com/mozilla/mortar/)
-template collection for building Open Web Apps.
-
-# Usage
-
-* git clone git://github.com/mozilla/mortar-app-stub.git myapp
+This is a Firefox OS sample application taken from the book [Developing Apps for Firefox OS Concepts, Techniques and Practical Solutions](https://leanpub.com/firefox-os). If you want to learn about Firefox OS app development, you may want to check the book.
