@@ -3,27 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <title>The Grumpy Phone</title>
-  <script src="https://d10ajoocuyu32n.cloudfront.net/jquery-1.9.1.min.js"></script>
+  <title>Funny Faces</title>
+  <link rel="stylesheet" href="/css/jquery.mobile-1.3.1.min.css">
+  <script src="/js/jquery-1.9.1.min.js"></script>
+  <script src="/js/jquery.mobile-1.3.1.min.js"></script>
   <style>
-      html {
-          height: 100%;
-          background-image: -moz-linear-gradient(top,#43BFC7,#008080);
-          background-repeat: repeat-x;
-      }
+    #content {
+        margin: 0;
+        padding: 0;
+    }
+
+    #myCanvas {
+        margin: 0;
+        padding: 0;
+    }
   </style>
 </head>
 <body>
+<div data-theme="a" data-role="header">
+    <h3>Funny Faces</h3>
+</div>
+<div id="content" data-role="content">
+    <canvas id="myCanvas"></canvas>
+</div>
+<div data-theme="a" data-role="footer" data-position="fixed">
+    <a href="#" onClick="window.location.reload()" data-role="button">Restart</a>
+</div>
 <script type="text/javascript">
-    window.ondeviceproximity = function (event) {
-        if (event.value < 5) {
-           vibrating =  navigator.vibrate(2000);
-           $('html').css('background-image', '-moz-linear-gradient(top,#fe8d4b,#ff6000)');
+    var c = document.querySelector('#myCanvas');
+    c.height = 960;
+    c.width = 540;
+    var cx = c.getContext('2d');
+    c.addEventListener("touchstart", handleStart, false);
+    alert("Take a face close-up photo!");
 
-        } else {
-            vibrating =  navigator.vibrate(0);
-            $('html').css('background-image', '-moz-linear-gradient(top,#43BFC7,#008080)');
+    var pick = new MozActivity({
+        name: "pick",
+        data: {
+            type: ["image/png", "image/jpg", "image/jpeg"]
+         }
+    });
+
+    pick.onsuccess = function () { 
+        var img = new Image();
+        img.onload = function() {
+            cx.drawImage(img, 0, 0, 540, 540 * img.height / img.width);
         }
+        img.src = window.URL.createObjectURL(this.result.blob);
+        alert("Now tip the nose!");
+    };
+
+    pick.onerror = function () { 
+        alert("Image could not be loaded :-(");
+    };
+
+    function handleStart(evt) {
+      evt.preventDefault();
+      var touches = evt.changedTouches;
+      var touch = touches[0];
+      var radius = 70;
+      cx.beginPath();
+      cx.arc(touch.pageX-2, touch.pageY-2, radius, 0, 2 * Math.PI, false);
+      cx.fillStyle = 'red';
+      cx.fill();
+      cx.stroke();
     }
 </script>
 </body>
